@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setIncome } from "../../store/incomeSlice";
-import { setTimeOfIncome } from "../../store/timeOfIncomeSlice";
-import { setTypeOfIncome } from "../../store/typeOfIncomeSlice";
+import { setIncome } from "../store/incomeSlice";
+import { setTimeOfIncome } from "../store/timeOfIncomeSlice";
+import { setTypeOfIncome } from "../store/typeOfIncomeSlice";
 import { useEffect } from "react";
 
 function Income() {

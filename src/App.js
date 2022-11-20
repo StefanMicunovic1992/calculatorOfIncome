@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Income from './components/Income/Income';
-import IncomeDetails from './components/IncomeDetails/IncomeDetails'
-import Header from './components/Header/Header';
+import Income from './components/Income';
+import IncomeDetails from './components/IncomeDetails'
+import Header from './components/Header';
 
 function App() {
   return (

@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { calculate } from "../../calculateFnc/calculate";
+import { calculate } from "../calculateFnc/calculate";
 import { useNavigate } from "react-router-dom";
 
 
 
 
 function IncomeDetails() {
-  let history = useNavigate();
   const incomeValue = useSelector((state) => state.incomeValue.income);
   const typeOfIncome = useSelector((state) => state.typeOfIncomeValue.typeOfIncome);
   const timeOfIncome = useSelector((state) => state.timeOfIncomeValue.timeOfIncome);
-
+  
   const [result,setResult] = useState()
+  
+  let history = useNavigate();
 
 useEffect(()=>{
+
+
 
   if(incomeValue && typeOfIncome && timeOfIncome){
     const result = calculate(incomeValue,typeOfIncome,timeOfIncome)
     
     setResult(result)
-  }else{
-    alert('You must fill in all fields, and the amount must be greater than 0.')
-    history("/");
+
+    document.getElementById(timeOfIncome).classList.add('bg-slate-400')
   }
 },[])
 
@@ -57,7 +59,7 @@ useEffect(()=>{
                     <td className="text-sm text-gray-900 font-light px-6 py-4 border-r border-slate-900">{result?.[2].tax}</td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 border-r border-slate-900">{result?.[2].net}</td>
                   </tr>
-                  <tr className="border-b border-slate-900" id="Annually ">
+                  <tr className="border-b border-slate-900" id="Annually">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r border-l border-slate-900">Annualy</td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 text-center border-r border-slate-900">{result?.[3].grossIncome}</td>
                     <td className="text-sm text-gray-900 font-light px-6 py-4 border-r border-slate-900">{result?.[3].tax}</td>
