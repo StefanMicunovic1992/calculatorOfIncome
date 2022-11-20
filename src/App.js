@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Income from './components/Income/Income';
+import IncomeDetails from './components/IncomeDetails/IncomeDetails'
+import Header from './components/Header/Header';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='w-screen h-screen flex flex-col justify-center items-center bg-slate-50'>
+      <div className='bg-[#F5E8C7] shadow-2xl'>
+      <BrowserRouter>
+      <Header></Header>
+        <Routes>
+          <Route path={'/'} element={<Income></Income>}></Route>
+          <Route path={'/income_details'} element={<IncomeDetails></IncomeDetails>}></Route>
+        </Routes>
+      </BrowserRouter>
+      </div>
     </div>
   );
 }
