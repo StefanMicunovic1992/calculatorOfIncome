@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { calculate } from "../calculateFnc/calculate";
+import { analysing_and_send_data_to_calculate } from "../allFunction/calculateFnc/calculator";
 
 function IncomeDetails() {
   const incomeValue = useSelector((state) => state.incomeValue.income);
@@ -11,7 +11,7 @@ function IncomeDetails() {
   
   useEffect(() => {
     if (incomeValue && typeOfIncome && timeOfIncome) {
-      const result = calculate(incomeValue, typeOfIncome, timeOfIncome);
+      const result = analysing_and_send_data_to_calculate(incomeValue, typeOfIncome, timeOfIncome);
       setResult(result);
       document.getElementById('divForMessage').classList.add('hidden')
     }else{
