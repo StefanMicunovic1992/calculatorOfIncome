@@ -5,8 +5,8 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <div className='w-screen h-screen flex flex-col justify-center items-center bg-slate-50'>
-      <div className='bg-[#F5E8C7] shadow-2xl'>
+    <div className='flex justify-center items-center w-[100vw] h-[100vh]'>
+      <div className='bg-[#F5E8C7] shadow-2xl lg:w-[50vw] lg:h-[60vh]'>
       <BrowserRouter>
       <Header></Header>
         <Routes>

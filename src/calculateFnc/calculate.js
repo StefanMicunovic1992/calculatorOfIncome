@@ -12,7 +12,7 @@ const calculateIncome= (income,type) =>{
         
         const result = [
             {
-                time:'weekly',
+                time:'Weekly',
                 grossIncome: (weeklyIncomeNet+((weeklyIncomeNet/8)*2)).toFixed(2),
                 tax: (weeklyIncomeNet+((weeklyIncomeNet/8)*2) - weeklyIncomeNet).toFixed(2),
                 net: weeklyIncomeNet.toFixed(2)
@@ -46,7 +46,7 @@ const calculateIncome= (income,type) =>{
 
         const result = [
             {
-                time:'weekly',
+                time:'Weekly',
                 grossIncome: weeklyIncomeGross.toFixed(2),
                 tax: (weeklyIncomeGross*0.2).toFixed(2),
                 net: (weeklyIncomeGross*0.8).toFixed(2)
@@ -89,19 +89,19 @@ export const calculate = (income, type, time) => {
     }else if(time == 'Fortnightly'){
         
         let newIncome = Math.fround(income/2)
-        console.log(newIncome)
+        
         const result = calculateIncome(newIncome,type)
         return result
     }else if(time == 'Monthly'){
         
         let newIncome = Math.fround(income/4.5) 
-        console.log(newIncome)
+        
         const result = calculateIncome(newIncome,type)
         return result
     }else if(time == 'Annually'){
         
         let newIncome = Math.fround(income/52) 
-        console.log(newIncome)
+        
         const result = calculateIncome(newIncome,type)
         return result
     }

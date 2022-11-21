@@ -1,18 +1,15 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIncome } from "../store/incomeSlice";
 import { setTimeOfIncome } from "../store/timeOfIncomeSlice";
 import { setTypeOfIncome } from "../store/typeOfIncomeSlice";
-import { useEffect } from "react";
 
 function Income() {
   const incomeValue = useSelector((state) => state.incomeValue.income);
-  const typeOfIncome = useSelector(
-    (state) => state.typeOfIncomeValue.typeOfIncome
-  );
-  const timeOfIncome = useSelector(
-    (state) => state.timeOfIncomeValue.timeOfIncome
-  );
+  const typeOfIncome = useSelector((state) => state.typeOfIncomeValue.typeOfIncome);
+  const timeOfIncome = useSelector((state) => state.timeOfIncomeValue.timeOfIncome);
+  
   const dispatch = useDispatch();
 
   let history = useNavigate();
@@ -56,8 +53,8 @@ function Income() {
   };
 
   return (
-    <div className="w-[50vw] h-[50vh]  flex items-center">
-      <form className="h-full w-full p-3 flex flex-col justify-center items-center gap-16">
+    <div className="h-[95vh] flex items-center lg:w-[50vw] lg:h-[55vh]">
+      <form className="w-[100%] h-[100%] p-3 flex flex-col justify-center items-center gap-16">
         <article className="w-[50%] h-[20%] flex flex-col items-center justify-center">
           <label htmlFor="incomeInput">Enter your income</label>
           <br />
@@ -79,7 +76,7 @@ function Income() {
               name="incomeTime"
               id="incomeTime"
               className="h-full text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              onChange={(e) => dispatch(setTimeOfIncome(e.target.value))}
+              onChange={(e) =>dispatch(setTimeOfIncome(e.target.value))}
             >
               <option value="Weekly">Weekly</option>
               <option value="Fortnightly">Fortnightly</option>
@@ -88,9 +85,9 @@ function Income() {
             </select>
           </div>
         </article>
-        <article className="w-[50%] h-[20%] flex flex-col justify-evenly items-center">
+        <article className="w-[100%] h-[20%] flex flex-col justify-evenly items-center">
           <legend className="text-center">Please choose the income type</legend>
-          <div className="w-full flex items-center justify-center">
+          <div className="w-full flex items-center justify-center sm:w-[70%] md:w-[50%] lg:w-[60%]">
             <div className="w-full flex items-center justify-center">
               <input
                 id="net"
@@ -104,7 +101,7 @@ function Income() {
                 Net income
               </label>
             </div>
-            <div className="w-full flex items-center justify-center">
+            <div className="w-[100%] flex items-center justify-center">
               <input
                 id="gross"
                 className="peer/gross mx-2"
@@ -122,7 +119,7 @@ function Income() {
             </div>
           </div>
         </article>
-        <article className="w-[50%] h-10 flex justify-center">
+        <article className="w-[100%] h-10 flex justify-center md:w-[60%]">
           <button
             type="button"
             id="calculateBtn"
