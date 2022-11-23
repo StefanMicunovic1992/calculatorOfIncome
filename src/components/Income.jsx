@@ -4,12 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { setIncome } from "../store/incomeSlice";
 import { setTimeOfIncome } from "../store/timeOfIncomeSlice";
 import { setTypeOfIncome } from "../store/typeOfIncomeSlice";
+import { setData } from "../store/dataFromCalculateFncSlice";
+import { analysing_and_send_data_to_calculate } from "../helpers/calculateFnc/calculator";
 
 function Income() {
   const incomeValue = useSelector((state) => state.incomeValue.income);
   const typeOfIncome = useSelector((state) => state.typeOfIncomeValue.typeOfIncome);
   const timeOfIncome = useSelector((state) => state.timeOfIncomeValue.timeOfIncome);
-  
+  const dataOfIncome = useSelector((state) => state.dataFromCalculateFncValue.dataFromCalculateFnc);
+
   const dispatch = useDispatch();
 
   let history = useNavigate();
@@ -44,11 +47,12 @@ function Income() {
 
   const calculate = () => {
     if (incomeValue > 0 && typeOfIncome && timeOfIncome) {
+      const result = analysing_and_send_data_to_calculate(incomeValue, typeOfIncome, timeOfIncome);
+      dispatch(setData(result))
+      document.getElementById('divForMessage').classList.add('invisible')
       history("/income_details");
     } else {
-      alert(
-        "You must fill in all fields, and the amount must be greater than 0."
-      );
+      document.getElementById('divForMessage').classList.remove('invisible')
     }
   };
 
@@ -67,7 +71,7 @@ function Income() {
               name="incomeInput"
               id="incomeInput"
               min="1"
-              className="h-7 px-2 focus:ring-blue-500 focus:border-blue-500"
+              className="h-7 px-2"
               placeholder="e.g. 10000"
               onInput={(e) => checkIncome(e)}
               onChange={(e) => dispatch(setIncome(Number(e.target.value)))}
@@ -75,7 +79,7 @@ function Income() {
             <select
               name="incomeTime"
               id="incomeTime"
-              className="h-full text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="h-full text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm"
               onChange={(e) =>dispatch(setTimeOfIncome(e.target.value))}
             >
               <option value="Weekly">Weekly</option>
@@ -129,6 +133,9 @@ function Income() {
             Calculate
           </button>
         </article>
+        <div id="divForMessage" className="-m-8 invisible">
+          <p className="text-red-500 font-bold text-center">You must fill in all fields, and the amount must be greater than 0.</p>
+        </div>
       </form>
     </div>
   );

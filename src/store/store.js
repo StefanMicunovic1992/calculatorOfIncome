@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import  incomeSlice from "./incomeSlice";
+import dataFromCalculateFncSlice from "./dataFromCalculateFncSlice";
+import incomeSlice from "./incomeSlice";
 import timeOfIncomeSlice from "./timeOfIncomeSlice";
 import typeOfIncomeSlice from "./typeOfIncomeSlice";
 
@@ -11,6 +12,7 @@ export const store= configureStore({
         incomeValue: incomeSlice,
         typeOfIncomeValue: typeOfIncomeSlice,
         timeOfIncomeValue: timeOfIncomeSlice,
+        dataFromCalculateFncValue: dataFromCalculateFncSlice
     }
 })
 
